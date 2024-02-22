@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Information</title>
+</head>
+<body>
+    <!-- Label about the weather -->
+    <h1> Displaying the weather data of my area : Gaddi Annaram , Hyderabad India</h1>
+    <!-- div element for displaying the data -->
+    <div id="myarea-info"></div>
+    <script>
+    // API that fetches weather data
+    fetch('https://api.openweathermap.org/data/2.5/weather?lat=17.376&lon=78.5371&appid=96ccd623cf958e2b82a6dde9f756446c')
+        .then(response => {
+            // logging the reponse
+            console.log(response);
+            // returning response as text
+            return response.text();
+        })
+        .then(data => {
+            // logging the data from API
+            console.log(data);
+            // display the data in myarea-info
+            document.getElementById('myarea-info').innerText = data;
+        })
+    </script>
+</body>
+</html>
