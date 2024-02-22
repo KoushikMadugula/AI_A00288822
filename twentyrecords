@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Products</title>
+</head>
+<body>
+    <!-- Label about the Product Details -->
+    <h1> Displaying first twenty product details from dummyjson</h1>
+    <!-- div element for displaying the data -->
+    <div id="product-details"></div>
+    <script>
+    // API that fetches data
+        fetch('https://dummyjson.com/products/')
+            .then(response => response.json())
+            .then(data => {
+                // logging the data from API
+                console.log(data);
+                 // div where data will be displayed
+                const productsDiv = document.getElementById('product-details');
+                 // Loop for displaying twenty items from posts
+                for (let i = 0; i < 20; i++) {
+                    // Looping through each product
+                    const product = data.products[i];
+                    // Adding HTML for each product
+                    productsDiv.innerHTML += `
+                        <p>Product Name: ${product.title}</p>
+                        <p>Product Price: ${product.price}</p>
+                        <p>Product Description: ${product.description}</p>
+                        <br>
+                    `;
+                }
+            })
+    </script>
+</body>
+</html>
